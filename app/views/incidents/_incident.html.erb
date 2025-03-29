@@ -1,2 +1,40 @@
-<div id="<%= dom_id incident %>">
+<div id="incident_<%= incident.id %>" class="bg-gray-100 p-4 rounded-lg shadow space-y-2">
+  <h2 class="text-lg font-semibold"><%= incident.title %></h2>
+
+  <p class="text-sm">
+    Status: 
+    <span class="font-medium 
+      <%= case incident.status
+          when 'open' then 'text-red-600'
+          when 'resolved' then 'text-green-600'
+          else 'text-gray-600' 
+        end %>">
+      <%= incident.status || "Unknown" %>
+    </span>
+  </p>
+
+  <p class="text-sm text-gray-700">
+    Reported by: <span class="font-medium"><%= incident.creator || "Unknown" %></span>
+  </p>
+
+
+  <p class="text-sm text-gray-700">
+    Created at: <span class="font-medium"><%= incident.created_at ? incident.created_at.strftime("%B %d, %Y %H:%M") : "Unknown" %></span>
+  </p>
+
+  <% if incident.resolved_at %>
+    <p class="text-sm text-gray-700">
+      Resolved at: <span class="font-medium"><%= incident.resolved_at.strftime("%B %d, %Y %H:%M") %></span>
+    </p>
+  <% else %>
+    <p class="text-sm text-gray-700">Resolved at: Unknown</p>
+  <% end %>
+
+  <p class="text-sm text-gray-700">
+    Description: <%= incident.description || "No description" %>
+  </p>
+
+  <div class="mt-2">
+    <%= link_to "Show", incident, class: "text-blue-600 hover:underline" %>
+  </div>
 </div>

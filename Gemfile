@@ -73,3 +73,5 @@ gem 'activerecord', '7.2.2.1'
 # CORS
 gem 'rack-cors'
 
+
+gem "tailwindcss-rails", "~> 4.2"
