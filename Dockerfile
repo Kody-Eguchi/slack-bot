@@ -13,8 +13,8 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips && \
+    rm -rf /var/lib/apt/lists
 
 # Set production environment
 ENV RAILS_ENV="production" \
@@ -32,9 +32,8 @@ RUN apt-get update -qq && \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install -v '2.3.6'
-RUN rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
-RUN bundle exec bootsnap precompile --gemfile
+RUN gem install bundler -v '2.3.6' && bundle install
+
 
 
 # Copy application code
