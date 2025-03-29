@@ -21,18 +21,18 @@ class SlackService
 
   end
 
-  def self.resolve_incident(incident_id)
+  def self.resolve_incident(channel_id)
 
 
     # identify current channel_id
 
 
     # Mark an incident as resolved in database
-    incident = Incident.find(incident_id)
+    incident = Incident.find_by(slack_channel_id: channel_id)
     incident.update(status: 'resolved')
 
     # Post resolution message to Slack
-    slack_client.chat_postMessage(channel: incident.channel, text: "Incident resolved!")
+    slack_client.chat_postMessage(channel: channel_id, text: "Incident resolved!")
   end
 
 

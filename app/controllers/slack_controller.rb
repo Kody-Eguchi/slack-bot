@@ -9,6 +9,8 @@ class SlackController < ApplicationController
 
     # Retrieve an event data of the request (contains user ID)
     slack_event = params.to_unsafe_h
+
+   
     
     case command
     when 'declare'
@@ -17,8 +19,8 @@ class SlackController < ApplicationController
       SlackService.declare_incident(title, description, severity, user)
       render json: { response_type: 'ephemeral', text: "Incident '#{title}' declared with severity #{severity}." }
     when 'resolve'
-      title = parts.join(" ")
-      SlackService.resolve_incident(incident_id)
+      channel_id = slack_event["channel_id"]
+      SlackService.resolve_incident(channel_id)
       render json: { response_type: 'ephemeral', text: " This incident has been resolved." }
     else
       render json: { response_type: 'ephemeral', text: "Unknown command: #{command}" }, status: :bad_request
