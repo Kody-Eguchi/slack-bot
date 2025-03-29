@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  post 'slack/declare', to: 'slack#declare'
-  post 'slack/resolve', to: 'slack#resolve'
+  post 'slack/rootly', to: 'slack#rootly'
+
 
 end

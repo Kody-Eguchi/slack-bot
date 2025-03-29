@@ -5,10 +5,12 @@ class SlackService
 
   def self.declare_incident(title, description = nil, serverity = nil)
     # Create an incident in database
-    Incident.create!(title: title, description: description, serverity: serverity)
+    Incident.create!(title: title, description: description, serverity: serverity, creater: "user1")
     
     # Create a new Slack channel for the incident
     slack_client.conversations_create(name: title)
+
+    render json: { response_type: 'in_channel', text: "Incident '#{title}' has been declared!" }
 
   end
 
