@@ -12,4 +12,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+  post 'slack/declare', to: 'slack#declare'
+  post 'slack/resolve', to: 'slack#resolve'
+
 end
