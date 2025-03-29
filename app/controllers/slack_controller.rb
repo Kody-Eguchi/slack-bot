@@ -7,11 +7,14 @@ class SlackController < ApplicationController
     parts = text.split(" ")
     command = parts.shift
 
-    puts "command #{command}"
+    # Retrieve an event data of the request (contains user ID)
+    slack_event = params.to_unsafe_h
+    
     case command
     when 'declare'
       title, description, severity = handle_params(parts)
-      SlackService.declare_incident(title, description, severity)
+      user = slack_event['user_id']
+      SlackService.declare_incident(title, description, severity, user)
       render json: { response_type: 'ephemeral', text: "Incident '#{title}' declared with severity #{severity}." }
     when 'resolve'
       title = parts.join(" ")
