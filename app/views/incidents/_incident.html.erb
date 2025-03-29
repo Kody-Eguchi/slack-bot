@@ -17,6 +17,13 @@
     Reported by: <span class="font-medium"><%= incident.creator || "Unknown" %></span>
   </p>
 
+  <p class="text-sm text-gray-700">
+    Severity: 
+    <span class="font-bold">
+      <%= incident.severity.presence || "Unknown" %>
+    </span>
+  </p>
+
 
   <p class="text-sm text-gray-700">
     Created at: <span class="font-medium"><%= incident.created_at ? incident.created_at.strftime("%B %d, %Y %H:%M") : "Unknown" %></span>
