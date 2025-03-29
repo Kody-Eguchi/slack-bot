@@ -4,6 +4,17 @@ class IncidentsController < ApplicationController
   # GET /incidents or /incidents.json
   def index
     @incidents = Incident.all
+
+    direction = params[:direction] == "desc" ? "desc" : "asc"
+
+    case params[:sort]
+    when "created_at"
+      @incidents = @incidents.order(created_at: direction)
+    when "title"
+      @incidents = @incidents.order(title: direction)
+    else
+      @incidents = @incidents.order(created_at: :desc) #
+    end
   end
 
   # GET /incidents/1 or /incidents/1.json
