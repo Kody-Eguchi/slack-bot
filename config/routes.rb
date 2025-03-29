@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   post 'slack/rootly', to: 'slack#rootly'
 
+  root to: redirect("/incidents")
 
 end
