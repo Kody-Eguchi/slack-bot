@@ -67,7 +67,7 @@ gem 'slack-ruby-client'
 gem 'slack-ruby-bot'
 
 # Database
-gem 'pg', '~> 1.1'
+gem 'pg', '~> 1.3'
 gem 'activerecord', '7.2.2.1'  
 
 # CORS
