@@ -4,7 +4,7 @@
 
 [Deployed App](https://slack-bot-evrb.onrender.com/incidents)
 
-###### slow initial loading time due to free plan on Render"
+###### slow initial loading time due to free plan on Render
 
 ## Development Process
 
