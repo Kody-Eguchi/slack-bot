@@ -2,7 +2,9 @@
 
 ###### Development Duration: 10 - 12 hours
 
-[Deployed App]: https://slack-bot-evrb.onrender.com/incidents "slow initial loading time due to free plan on Render"
+[Deployed App](https://slack-bot-evrb.onrender.com/incidents)
+
+###### slow initial loading time due to free plan on Render"
 
 ## Development Process
 
