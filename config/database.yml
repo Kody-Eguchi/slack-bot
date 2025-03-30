@@ -36,4 +36,9 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
-  # database: path/to/persistent/storage/production.sqlite3
+  database: path/to/persistent/storage/production.sqlite3
+  database: slack_bot_production
+  host: dpg-cvkb92ogjchc73ca6ebg-a
+  port: 5432
+  user: production
+  password: <%= ENV['DATABASE_PASSWORD'] %>
