@@ -15,8 +15,9 @@ class SlackController < ApplicationController
     case command
     when 'declare'
       title, description, severity = handle_params(parts)
-      user = slack_event['user_id']
-      SlackService.declare_incident(title, description, severity, user)
+      user_id = slack_event['user_id']
+      user_name = slack_event['user_name']
+      SlackService.declare_incident(title, description, severity, user_id, user_name)
       render json: { response_type: 'ephemeral', text: "Incident '#{title}' declared with severity #{severity}." }
     when 'resolve'
       channel_id = slack_event["channel_id"]
