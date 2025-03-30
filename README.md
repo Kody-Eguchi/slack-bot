@@ -36,7 +36,7 @@
 ### 5. Frontend Development
 
 - **Incident List UI**: Built a simple, clean UI using Turbo to display incidents fetched from the database.
-- **Real-time Updates**: Ensured the frontend could update in real-time when changes to incidents occurred, reflecting those changes back in the Slack interface as well.
+- **Real-time Updates**: Ensured the frontend could update in real-time when changes to incidents occurred, reflecting those changes back in the Slack interface as well. (Still in progress)
 
 ### 6. Deployment
 
@@ -46,7 +46,7 @@
 ### 7. UI/UX
 
 - **Minimal UI for Incident Management**: Focused on building an intuitive and simple UI using Turbo for efficient incident management. The design aimed at providing clear visibility of incident statuses and updates.
-- **Slack Integration**: Ensured the UI reflected changes triggered from Slack, giving users a seamless experience between the web app and Slack.
+- **Slack Integration**: Ensured the UI reflected changes triggered from Slack, giving users a seamless experience between the web app and Slack. (Still in progress)
 
 ## Implementation
 
