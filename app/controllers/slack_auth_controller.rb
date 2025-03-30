@@ -9,7 +9,7 @@ class SlackAuthController < ApplicationController
                      "client_id=#{ENV['SLACK_CLIENT_ID']}&" +
                      "scope=commands,chat:write&" +
                      "redirect_uri=#{ENV['APP_HOST']}/slack/oauth/callback"
-    redirect_to slack_auth_url
+    redirect_to slack_auth_url, allow_other_host: true
   end
 
   # Handle OAuth callback after user install the slack app
