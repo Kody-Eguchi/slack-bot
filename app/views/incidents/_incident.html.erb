@@ -36,7 +36,7 @@
   
 
   <p class="text-sm text-gray-700">
-    Description: <%= incident.description || "No description" %>
+    Description: <%= incident.description.presence || "No description" %>
   </p>
 
 </div>

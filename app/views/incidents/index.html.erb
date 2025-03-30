@@ -10,17 +10,21 @@
 
   <turbo-frame id="incidents" class="space-y-4">
     <div class="mb-4 flex gap-4">
-      <% new_direction = params[:direction] == "asc" ? "desc" : "asc" %>
-
-      <%= link_to "Sort by Created At (#{params[:direction] == 'asc' ? 'New to Old' : 'Old to New'})",
-        incidents_path(sort: "created_at", direction: new_direction),
-        data: { turbo_frame: "incidents" },
-        class: "text-blue-600 hover:underline" %>
-
-      <%= link_to "Sort Alphabetically (#{params[:direction] == 'asc' ? 'Z-A' : 'A-Z'})",
-        incidents_path(sort: "title", direction: new_direction),
-        data: { turbo_frame: "incidents" },
-        class: "text-blue-600 hover:underline" %>
+      <label for="sort-select" class="font-medium">Sort By: </label>
+      <select class="border p-2 rounded" onchange="Turbo.visit(this.value, { frame: 'incidents' })">
+        <option value="<%= incidents_path(sort: 'created_at', direction: 'desc') %>" <%= params[:sort] == 'created_at' && params[:direction] == 'desc' ? 'selected' : '' %>>
+          Created At (New to Old)
+        </option>
+        <option value="<%= incidents_path(sort: 'created_at', direction: 'asc') %>" <%= params[:sort] == 'created_at' && params[:direction] == 'asc' ? 'selected' : '' %>>
+          Created At (Old to New)
+        </option>
+        <option value="<%= incidents_path(sort: 'title', direction: 'asc') %>" <%= params[:sort] == 'title' && params[:direction] == 'asc' ? 'selected' : '' %>>
+          Alphabetically (A-Z)
+        </option>
+        <option value="<%= incidents_path(sort: 'title', direction: 'desc') %>" <%= params[:sort] == 'title' && params[:direction] == 'desc' ? 'selected' : '' %>>
+          Alphabetically (Z-A)
+        </option>
+      </select>
     </div>
 
 
@@ -29,9 +33,6 @@
     <% end %>
   </turbo-frame>
 
-  <div class="mt-6">
-    <%= link_to "New Incident", new_incident_path, class: "inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition" %>
-  </div>
 </div>
 
 <turbo-stream from="incidents"></turbo-stream>
