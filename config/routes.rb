@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   root to: redirect("/incidents")
   
   get '/slack/install', to: 'slack_auth#install'
-
+  get '/slack/oauth/callback', to: 'slack_auth#callback'
 
 end
