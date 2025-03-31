@@ -40,6 +40,13 @@ class SlackAuthController < ApplicationController
       Rails.logger.info("Storing token for team #{team_id} in Redis")
       Rails.cache.write("slack_#{team_id}_token", access_token)
 
+      # Check Redis connection (Optional)
+      redis = Redis.new(url: ENV['REDIS_URL'])
+      redis_connection_status = redis.ping
+      Rails.logger.info("Redis connection check: #{redis_connection_status}")
+      stored_token = Rails.cache.read("slack_#{team_id}_token")
+      Rails.logger.info("Retrieved token for team #{team_id} from Redis: #{stored_token}")
+
       render json: { message: "Slack app installed successfully!", team: data["team"]["name"] }
     else
       render json: { error: data["error"] }, status: :unauthorized
