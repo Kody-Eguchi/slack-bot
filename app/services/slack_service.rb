@@ -87,11 +87,42 @@ class SlackService
 
   def self.resolve_incident(slack_event)
     channel_id = slack_event["channel_id"]
+
+    team_id = slack_event["team_id"]
+
+    slack_client_instance = slack_client(team_id)
+    return unless slack_client_instance
+
+    # Ensure bot is authenticated and belongs to the correct team
+    auth_response = slack_client_instance.auth_test
+    if auth_response["ok"]
+      bot_team_id = auth_response["team_id"]
+      Rails.logger.info("✅ Bot authenticated in team: #{bot_team_id}")
+
+      if bot_team_id != team_id
+        Rails.logger.error("🚨 Mismatch! Expected team #{team_id}, but bot is in #{bot_team_id}")
+        return
+      end
+    else
+      Rails.logger.error("❌ Bot authentication failed: #{auth_response['error']}")
+      return
+    end
+
+
+
+
+
     # Mark an incident as resolved in database
+    # incident = Incident.find_by(slack_channel_id: channel_id)
+    # incident.update(status: 'resolved', resolved_at: Time.current)
     incident = Incident.find_by(slack_channel_id: channel_id)
+    return Rails.logger.error("❌ Incident not found for channel: #{channel_id}") unless incident
+
     incident.update(status: 'resolved', resolved_at: Time.current)
+
     # Post resolution message to Slack
-    slack_client.chat_postMessage(channel: channel_id, text: "Incident resolved!")
+    # slack_client.chat_postMessage(channel: channel_id, text: "Incident resolved!")
+    slack_client_instance.chat_postMessage(channel: channel_id, text: "✅ Incident resolved!")
   end
 
 
