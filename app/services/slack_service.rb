@@ -54,8 +54,8 @@ class SlackService
     return unless response['ok']
 
     # Check bot's membership in the newly created channel
-    slack_channel_id = response['channel']['id']
-    channel_info = slack_client.conversations_info(channel: slack_channel_id)
+    # slack_channel_id = response['channel']['id']
+    # channel_info = slack_client.conversations_info(channel: slack_channel_id)
 
     
    
@@ -63,6 +63,8 @@ class SlackService
   
     # Get the Slack channel ID from the response
     slack_channel_id = response['channel']['id']
+    Rails.logger.info "🍎🍎🍎Slack Channel ID: #{slack_channel_id}🍎🍎🍎"
+
     incident.update!(slack_channel_id: slack_channel_id)
 
     # inviting the user to a new channel
