@@ -26,6 +26,10 @@ class SlackService
     else
       Rails.logger.error("🚨🚨🚨Slack authentication failed: #{auth_response['error']}")
     end
+
+    channels_response = slack_client.conversations_list
+    channels = channels_response['channels']
+    Rails.logger.info("List of channels in the workspace: #{channels.map { |channel| channel['name'] }.join(', ')}")
   
     # Get the Slack channel ID from the response
     slack_channel_id = response['channel']['id']
