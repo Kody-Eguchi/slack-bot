@@ -19,6 +19,13 @@ class SlackService
     response = slack_client.conversations_create(name: title)
 
     Rails.logger.info "Slack API Response: #{response.inspect}"
+
+    auth_response = slack_client.auth_test
+    if auth_response["ok"]
+      Rails.logger.info("🚨🚨🚨Authenticated Slack user: #{auth_response['user']}")
+    else
+      Rails.logger.error("🚨🚨🚨Slack authentication failed: #{auth_response['error']}")
+    end
   
     # Get the Slack channel ID from the response
     slack_channel_id = response['channel']['id']
