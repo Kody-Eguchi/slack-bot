@@ -7,7 +7,7 @@ class SlackAuthController < ApplicationController
   def install
     slack_auth_url = "https://slack.com/oauth/v2/authorize?" +
                      "client_id=#{ENV['SLACK_CLIENT_ID']}&" +
-                     "scope=chat:write,channels:manage,channels:read,groups:write,users:read,commands,conversations:write,channels:write&" +
+                     "scope=admin,channels:manage,chat:write,commands,groups:write,im:write,mpim:write,users:read,users:write,team:read,channels:read,channels:write,conversations:write&" +
                      "redirect_uri=#{ENV['APP_HOST']}/slack/oauth/callback"
     redirect_to slack_auth_url, allow_other_host: true
   end
