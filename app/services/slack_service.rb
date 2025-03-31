@@ -8,12 +8,17 @@ class SlackService
   def self.declare_incident(parts, slack_event)
     title, description, severity = new.handle_params(parts)
     user_id, user_name = slack_event.values_at('user_id', 'user_name')
+    
+    Rails.logger.info "User Info: User ID: #{user_id}, User Name: #{user_name}"
+    Rails.logger.info "Slack Event: #{slack_event.inspect}"
 
     # Create an incident in database
     incident = Incident.create!(title: title, description: description, severity: severity, creator: user_name)
     
     # Create a new Slack channel for the incident
     response = slack_client.conversations_create(name: title)
+
+    Rails.logger.info "Slack API Response: #{response.inspect}"
   
     # Get the Slack channel ID from the response
     slack_channel_id = response['channel']['id']
