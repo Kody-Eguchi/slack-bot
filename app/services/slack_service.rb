@@ -27,10 +27,10 @@ class SlackService
     auth_response = slack_client.auth_test
     bot_user_id = auth_response['user_id']
     
-    if !channel_info['channel']['members'].include?(bot_user_id)
+   
       invite_response = slack_client.conversations_invite(channel: slack_channel_id, users: bot_user_id)
       Rails.logger.info "Bot Invite Response: #{invite_response.inspect}"
-    end
+    
 
     auth_response = slack_client.auth_test
     if auth_response["ok"]
