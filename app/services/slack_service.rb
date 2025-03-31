@@ -25,7 +25,9 @@ class SlackService
     incident.update!(slack_channel_id: slack_channel_id)
 
     # inviting the user to a new channel
-    slack_client.conversations_invite(channel: slack_channel_id, users: user_id)
+    Rails.logger.info "User ID before inviting: #{user_id.inspect}"
+    invite_response = slack_client.conversations_invite(channel: slack_channel_id, users: user_id)
+    Rails.logger.info "Slack Invite Response: #{invite_response.inspect}"
 
     # Post a summary of the incident in the new channel
     slack_client.chat_postMessage(channel: slack_channel_id, 
