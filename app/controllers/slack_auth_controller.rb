@@ -37,6 +37,7 @@ class SlackAuthController < ApplicationController
       team_id = data["team"]["id"]
       access_token = data["access_token"]
 
+      Rails.logger.info("Storing token for team #{team_id} in Redis")
       Rails.cache.write("slack_#{team_id}_token", access_token)
 
       render json: { message: "Slack app installed successfully!", team: data["team"]["name"] }
