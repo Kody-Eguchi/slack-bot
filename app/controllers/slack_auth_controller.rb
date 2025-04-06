@@ -45,7 +45,8 @@ class SlackAuthController < ApplicationController
       redis_connection_status = redis.ping
       Rails.logger.info("Redis connection check: #{redis_connection_status}")
 
-      render json: { message: "Slack app installed successfully!", team: data["team"]["name"] }
+      # render json: { message: "Slack app installed successfully!", team: data["team"]["name"] }
+      render :index, locals: { team_name: data["team"]["name"] }
     else
       render json: { error: data["error"] }, status: :unauthorized
     end
