@@ -78,4 +78,4 @@ gem "tailwindcss-rails", "~> 4.2"
 
 gem "dockerfile-rails", ">= 1.7", group: :development
 
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.4'
