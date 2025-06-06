@@ -1,5 +1,15 @@
 module SlackService
-  include SlackHelper
+  def self.handle_params(parts)
+    # Identify severity
+    valid_severities = ['sev0', 'sev1', 'sev2']
+    severity = valid_severities.include?(parts.last) ? parts.pop : 'sev1' 
+
+    # Extract title and description 
+    title = parts.shift 
+    description = parts.join(" ") || nil
+
+    [title, description, severity]
+  end
 
   def self.slack_client
     @slack_client ||= Slack::Web::Client.new(token: ENV['SLACK_BOT_TOKEN'])
@@ -19,7 +29,7 @@ module SlackService
   end
 
   def self.declare_incident(parts, slack_event)
-    title, description, severity = SlackHelper.handle_params(parts)
+    title, description, severity = handle_params(parts)
     user_id, user_name = slack_event.values_at('user_id', 'user_name')
     team_id = slack_event['team_id']
     
