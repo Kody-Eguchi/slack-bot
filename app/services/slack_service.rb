@@ -1,4 +1,4 @@
-class SlackService
+module SlackService
   include SlackHelper
 
   def self.slack_client
@@ -19,7 +19,7 @@ class SlackService
   end
 
   def self.declare_incident(parts, slack_event)
-    title, description, severity = new.handle_params(parts)
+    title, description, severity = SlackHelper.handle_params(parts)
     user_id, user_name = slack_event.values_at('user_id', 'user_name')
     team_id = slack_event['team_id']
     
