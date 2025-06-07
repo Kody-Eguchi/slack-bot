@@ -3,12 +3,7 @@
 
   <p class="text-sm">
     Status: 
-    <span class="font-medium 
-      <%= case incident.status
-          when 'open' then 'text-red-600'
-          when 'resolved' then 'text-green-600'
-          else 'text-gray-600' 
-        end %>">
+    <span class="font-medium <%= status_css_class(incident.status) %>">
       <%= incident.status || "Unknown" %>
     </span>
   </p>
