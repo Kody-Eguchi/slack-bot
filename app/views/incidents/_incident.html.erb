@@ -19,16 +19,13 @@
     </span>
   </p>
 
-
   <p class="text-sm text-gray-700">
     Created at: <span class="font-medium"><%= incident.created_at ? incident.created_at.strftime("%B %d, %Y %H:%M") : "Unknown" %></span>
   </p>
-
   
   <p class="text-sm text-gray-700">
     Resolved at: <span class="font-medium"><%= incident.resolved_at ? incident.resolved_at.strftime("%B %d, %Y %H:%M") : "N/A" %></span>
   </p>
-  
 
   <p class="text-sm text-gray-700">
     Description: <%= incident.description.presence || "No description" %>

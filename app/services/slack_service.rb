@@ -15,7 +15,6 @@ module SlackService
     @slack_client ||= Slack::Web::Client.new(token: ENV['SLACK_BOT_TOKEN'])
   end
 
-
   # a bot in each workspace should have its own team_id, this is to make sure that a bot is not creating or posting in a different
   def self.slack_client(team_id)
     token = Rails.cache.read("slack_#{team_id}_token")
@@ -33,7 +32,6 @@ module SlackService
     user_id, user_name = slack_event.values_at('user_id', 'user_name')
     team_id = slack_event['team_id']
     
-
     slack_client_instance = slack_client(team_id)
     return unless slack_client_instance
 
@@ -108,7 +106,5 @@ module SlackService
     # Post resolution message to Slack
     slack_client_instance.chat_postMessage(channel: channel_id, text: "✅ Incident resolved!")
   end
-
-
 end
 
