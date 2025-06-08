@@ -76,6 +76,14 @@ class IncidentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def incident_params
-      params.fetch(:incident, {})
+      params.require(:incident).permit(
+        :title,
+        :description,
+        :severity,
+        :status,
+        :creator,
+        :slack_channel_id,
+        :resolved_at
+      )
     end
 end
