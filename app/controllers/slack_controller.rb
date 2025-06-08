@@ -1,7 +1,7 @@
 class SlackController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def rootly
+  def flag
     text = params[:text]
     return render json: { response_type: 'ephemeral', text: "Invalid command format." }, status: :bad_request if text.blank?
     parts = text.split(" ")

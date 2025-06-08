@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  post 'slack/rootly', to: 'slack#rootly'
+  post 'slack/flag', to: 'slack#flag'
 
   root to: redirect("/incidents")
   
