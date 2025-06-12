@@ -17,7 +17,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -75,9 +75,6 @@ gem 'activerecord', '7.2.2.1'
 # CORS
 gem 'rack-cors'
 
-
 gem "tailwindcss-rails", "~> 4.2"
 
-gem "dockerfile-rails", ">= 1.7", group: :development
 
-gem 'redis', '~> 4.0'
