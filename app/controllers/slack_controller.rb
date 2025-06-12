@@ -17,6 +17,7 @@ class SlackController < ApplicationController
       render json: { response_type: 'ephemeral', text: "Incident declared" }
     when 'resolve'
       SlackService.resolve_incident(slack_event)
+      render json: { response_type: 'ephemeral', text: "Incident resolved" }
     else
       render json: { response_type: 'ephemeral', text: "Unknown command: #{command}" }, status: :bad_request
     end
