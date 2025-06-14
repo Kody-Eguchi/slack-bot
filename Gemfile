@@ -59,6 +59,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'webmock'
+  gem 'webdrivers'
 end
 
 # Manage environment variables
