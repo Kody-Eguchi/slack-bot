@@ -38,7 +38,7 @@ production:
   <<: *default
   database: path/to/persistent/storage/production.sqlite3
   database: slack_bot_production
-  host: dpg-cvkb92ogjchc73ca6ebg-a
+  host: dpg-d17m2cemcj7s73c0krig-a
   port: 5432
   user: production
   password: <%= ENV['DATABASE_PASSWORD'] %>
