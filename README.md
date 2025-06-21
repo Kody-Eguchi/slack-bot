@@ -1,38 +1,3 @@
-## Dependancies
-
-### Core Framework & Backend
-
-- `rails` ~> 7.2.2, >= 7.2.2.1
-- `pg` ~> 1.3
-- `activerecord` 7.2.2.1
-
-### Slack Integration
-
-- `slack-ruby-client`
-- `slack-ruby-bot`
-
-### Environment & Configuration
-
-- `dotenv-rails`
-
-### CORS
-
-- `rack-cors`
-
-### Frontend Styling
-
-- `tailwindcss-rails` ~> 4.2
-
-### Web Server
-
-- `puma` >= 5.0
-
-### Caching / Realtime
-
-- `redis` ~> 4.0
-
----
-
 ## Live Links
 
 - [Deployed App](https://slack-bot-evrb.onrender.com/incidents)
@@ -71,15 +36,15 @@
 
 ### Install backend dependencies
 
-bundle install
+`bundle install`
 
 ### Install TailwindCSS
 
-rails tailwindcss:install
+`rails tailwindcss:install`
 
 ### Set up the database
 
-rails db:setup
+`rails db:setup`
 
 ---
 
@@ -87,9 +52,9 @@ rails db:setup
 
 ### Run tests
 
-bundle exec rspec
+`bundle exec rspec`
 
 ### Generate an HTML report (optional)
 
-bundle exec rspec --format html --out rspec_report.html
-open rspec_report.html
+`bundle exec rspec --format html --out rspec_report.html`
+`open rspec_report.html`
