@@ -26,7 +26,7 @@
 
 - Ruby
 - PostgreSQL
-- Redis
+- Redis/Valkey
 - Node.js and Yarn (for Tailwind)
 - Slack workspace where you can install the bot
 
