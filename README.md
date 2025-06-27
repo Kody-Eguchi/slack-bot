@@ -1,3 +1,7 @@
+## Description
+
+A simple Slack-integrated incident management tool built with Rails and PostgreSQL. The bot allows users to create and resolve incidents directly from a Slack channel. It also includes a minimal web UI to view incident history, statuses, and details, making it easy for teams to track and manage disruptions in real-time.
+
 ## Live Links
 
 - [Deployed App](https://slack-bot-evrb.onrender.com/incidents)
