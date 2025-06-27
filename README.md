@@ -46,7 +46,9 @@
 
 `rails db:setup`
 
-**_ requires to have Slack API keys to work _**
+[!WARNING]  
+This project requires Slack API keys to function properly.  
+Please refer to the `.env.example` file for the necessary environment variable names and add your own keys in a new `.env` file.
 
 ---
 
