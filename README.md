@@ -46,6 +46,8 @@
 
 `rails db:setup`
 
+**_ requires to have Slack API keys to work _**
+
 ---
 
 ## Running Tests
