@@ -379,7 +379,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  activerecord (= 7.2.2.1)
   bootsnap
   brakeman
   capybara
