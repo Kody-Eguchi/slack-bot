@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :incidents
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
