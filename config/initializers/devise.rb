@@ -312,6 +312,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # omniauth
-  config.omniauth :slack, ENV['SLACK_CLIENT_ID'], ENV['SLACK_CLIENT_SECRET'], scope: 'identity.basic,identity.email'
+  # config.omniauth :slack, ENV['SLACK_CLIENT_ID'], ENV['SLACK_CLIENT_SECRET'], scope: 'users:read,users:read.email'
 
 end

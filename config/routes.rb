@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users
   resources :incidents
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -19,7 +19,12 @@ Rails.application.routes.draw do
 
   root to: redirect("/incidents")
   
-  get '/slack/install', to: 'slack_auth#install'
-  get '/slack/oauth/callback', to: 'slack_auth#callback'
+  # Slack Bot
+  get '/slack/install', to: 'slack_auth#install_bot'
+  get '/slack/oauth/callback', to: 'slack_auth#bot_callback'
+
+  # Slack User Auth
+  get '/auth/slack', to: 'slack_auth#start_user_auth', as: :slack_user_auth_start
+  get '/auth/slack/callback', to: 'slack_auth#user_callback'
 
 end

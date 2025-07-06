@@ -1,0 +1,9 @@
+<header>
+  <% if user_signed_in? %>
+    <p>Welcome, <%= current_user.slack_user_name || current_user.email %>!</p>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign in with Slack', slack_user_auth_start_path %>
+  <% end %>
+</header>
+
