@@ -78,6 +78,3 @@ gem "tailwindcss-rails", "~> 4.2"
 
 gem 'devise'
 
-# omniauth
-gem 'omniauth'
-gem 'omniauth-slack'
