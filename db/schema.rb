@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_03_011437) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_10_001527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_03_011437) do
     t.datetime "updated_at", null: false
     t.integer "severity", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.string "slack_user_id"
+    t.index ["slack_user_id"], name: "index_incidents_on_slack_user_id"
   end
 
   create_table "users", force: :cascade do |t|

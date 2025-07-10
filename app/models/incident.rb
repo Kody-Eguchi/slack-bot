@@ -1,4 +1,6 @@
 class Incident < ApplicationRecord
+  belongs_to :user, primary_key: "slack_user_id", foreign_key: "slack_user_id", optional: true
+
   enum severity: { sev0: 0, sev1: 1, sev2: 2, sev3: 3 }, _prefix: true
   enum status: { open: 0, resolved: 1 }, _prefix: true
 

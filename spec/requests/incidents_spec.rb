@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Incidents", type: :request do
+  let(:user) { User.create!(email: "test@example.com", password: "password", slack_user_id: "U12345") }
+
   let(:valid_attributes) do
     {
       title: 'Database outage',
       severity: 'sev1',
-      status: 'open'
+      status: 'open',
+      slack_user_id: user.slack_user_id
     }
   end
 
@@ -13,7 +16,8 @@ RSpec.describe "Incidents", type: :request do
     {
       title: "",
       severity: "invalid",
-      status: "closed"
+      status: "closed",
+      slack_user_id: user.slack_user_id
     }
   end
 

@@ -31,7 +31,7 @@ class IncidentsController < ApplicationController
   end
 
   # POST /incidents or /incidents.json
-  def create
+  def create    
     @incident = Incident.new(incident_params)
 
     respond_to do |format|
@@ -83,7 +83,8 @@ class IncidentsController < ApplicationController
         :status,
         :creator,
         :slack_channel_id,
-        :resolved_at
+        :resolved_at,
+        :slack_user_id
       )
     end
 end
