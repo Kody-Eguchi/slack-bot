@@ -7,6 +7,14 @@ module IncidentsHelper
     end
   end
 
+  def toggle_incidents_button_label_and_path
+    if params[:show_all] == "true"
+      ["Show My Incidents", incidents_path(sort: params[:sort], direction: params[:direction])]
+    else
+      ["Show All", incidents_path(sort: params[:sort], direction: params[:direction], show_all: "true")]
+    end
+  end
+
   def sort_option(label, sort_field, direction)
     selected = (params[:sort]== sort_field && params[:direction] == direction) ? 'selected' : ''
     value = incidents_path(sort: sort_field, direction: direction)

@@ -5,6 +5,10 @@ class IncidentsController < ApplicationController
   def index
     @incidents = Incident.all
 
+    if user_signed_in? && current_user.slack_user_id.present? && params[:show_all] != "true"
+      @incidents = @incidents.where(slack_user_id: current_user.slack_user_id)
+    end
+
     direction = params[:direction] == "desc" ? "desc" : "asc"
 
     case params[:sort]

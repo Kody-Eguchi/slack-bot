@@ -15,9 +15,14 @@
         <%= sort_option('Alphabetically (Z-A)', 'title', 'desc') %>
       </select>
     </div>
+
+    <% label, path = toggle_incidents_button_label_and_path %>
+    <%= link_to label, path, class: "px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition bg-blue-600" %>
+
     <% @incidents.each do |incident| %>
       <%= render incident %>
     <% end %>
+
   </turbo-frame>
 </div>
 
