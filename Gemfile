@@ -74,7 +74,7 @@ gem 'pg', '~> 1.3'
 # CORS
 gem 'rack-cors'
 
-gem "tailwindcss-rails", "~> 4.2"
+gem "tailwindcss-rails", "~> 4.3"
 
 gem 'devise'
 
